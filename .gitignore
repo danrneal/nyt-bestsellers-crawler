@@ -1,0 +1,6 @@
+env
+best_sellers.json
+__pycache__
+*.pyc
+.idea
+.env
