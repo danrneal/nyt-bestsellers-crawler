@@ -26,7 +26,7 @@ def api_call(call_url):
             )
             time.sleep(sleep_time)
     API_CALLS.append(datetime.datetime.now())
-    return json.loads(requests.get(f"{call_url}).text)
+    return json.loads(requests.get(call_url).text)
 
 
 def save_best_seller_file(best_sellers):
@@ -59,8 +59,11 @@ def retrieve_number_ones(best_sellers):
         results = api_call(url)['results']
 
         for list_ in results['lists']:
-            author = list_['books'][0]['author'].strip()
+            author = list_['books'][0]['contributor'].strip()
             title = titlecase(list_['books'][0]['title'].strip())
+
+            if author.startswith('by '):
+                author = author[3:].strip()
 
             if not any(
                 number_one['author'] == author and number_one['title'] == title
@@ -91,8 +94,11 @@ def retrieve_audio_best_sellers(best_sellers):
             results = api_call(url)['results']
 
             for book in results['books']:
-                author = book['author'].strip()
+                author = book['contributor'].strip()
                 title = titlecase(book['title'].strip())
+
+                if author.startswith('by '):
+                    author = author[3:].strip()
 
                 if not any(
                     audio_best_seller['author'] == author and
