@@ -1,4 +1,5 @@
 env
+venv
 best_sellers.json
 __pycache__
 *.pyc
