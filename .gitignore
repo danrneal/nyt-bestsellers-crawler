@@ -1,9 +1,5 @@
-env
-venv
-best_sellers.json
-__pycache__
+__pycache__/
 *.pyc
-.idea
 .env
-.history
-.vscode
+env/
+best_sellers.json

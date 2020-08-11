@@ -1,0 +1,5 @@
+{
+  "python.linting.enabled": false,
+  "python.pythonPath": "env/bin/python",
+  "python.terminal.activateEnvInCurrentTerminal": true
+}
